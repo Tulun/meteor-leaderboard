@@ -1,0 +1,1 @@
+First look at Meteor, building a leaderboard app.
