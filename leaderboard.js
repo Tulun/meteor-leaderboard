@@ -1,7 +1,5 @@
 PlayersList = new Mongo.Collection('players');
 
-console.log('Hello, world!');
-
 if(Meteor.isClient) {
   Template.leaderboard.helpers({
     'player': function(){
