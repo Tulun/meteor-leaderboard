@@ -57,16 +57,28 @@ if(Meteor.isClient) {
         score: 0,
         createdBy: currentUserId
       });
-
+      Meteor.call('insertPlayerData');
     }
   });
 }
 
 
 if(Meteor.isServer) {
+
   Meteor.publish('thePlayers', function() {
     var currentUserId = this.userId;
     return PlayersList.find({createdBy: currentUserId})
+  });
+
+  Meteor.methods({
+    'insertPlayerData': function() {
+      var currentUserId = Meteor.userId();
+      PlayersList.insert({
+        name: 'David',
+        score: 0,
+        createdBy: currentUserId
+      });
+    }
   });
 };
 
