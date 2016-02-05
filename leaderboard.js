@@ -6,7 +6,7 @@ if(Meteor.isClient) {
   console.log('Hello client.');
   Template.leaderboard.helpers({
     'player': function(){
-      return 'Some text'
+      return PlayersList.find()
     }
   });
 };
