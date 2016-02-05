@@ -12,7 +12,8 @@ if(Meteor.isClient) {
 
   Template.leaderboard.events({
     'click .player': function() {
-      console.log('Player clicked!')
+      var playerId = this._id;
+      Session.set('selectedPlayer', playerId);
     }
   });
 
@@ -21,3 +22,4 @@ if(Meteor.isClient) {
 if(Meteor.isServer) {
   console.log('Hello server.')
 };
+
