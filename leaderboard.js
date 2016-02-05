@@ -52,13 +52,9 @@ if(Meteor.isClient) {
       event.preventDefault();
       var playerName = event.target.playerName.value;
       var currentUserId = Meteor.userId();
-      PlayersList.insert({
-        name: playerName,
-        score: 0,
-        createdBy: currentUserId
-      });
-      Meteor.call('insertPlayerData');
+      Meteor.call('insertPlayerData', playerName);
     }
+
   });
 }
 
@@ -71,10 +67,10 @@ if(Meteor.isServer) {
   });
 
   Meteor.methods({
-    'insertPlayerData': function() {
+    'insertPlayerData': function(playerName) {
       var currentUserId = Meteor.userId();
       PlayersList.insert({
-        name: 'David',
+        name: playerName,
         score: 0,
         createdBy: currentUserId
       });
