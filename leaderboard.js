@@ -7,6 +7,7 @@ if(Meteor.isClient) {
     'player': function(){
       return PlayersList.find()
     },
+
     'selectedClass': function() {
       var playerId = this._id;
       var selectedPlayer = Session.get('selectedPlayer');
@@ -20,6 +21,11 @@ if(Meteor.isClient) {
     'click .player': function() {
       var playerId = this._id;
       Session.set('selectedPlayer', playerId);
+    },
+
+    'click .increment': function() {
+      var selectedPlayer = Session.get('selectedPlayer');
+      PlayersList.update(selectedPlayer, {$inc: {score: 5} });
     }
   });
 }
