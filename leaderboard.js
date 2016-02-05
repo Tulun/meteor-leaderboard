@@ -38,6 +38,19 @@ if(Meteor.isClient) {
       PlayersList.update(selectedPlayer, {$inc: {score: -5} });
     }
   });
+
+  Template.addPlayerForm.events({
+
+    'submit form': function(event) {
+      event.preventDefault();
+      var playerName = event.target.playerName.value;
+      PlayersList.insert({
+        name: playerName,
+        score: 0
+      });
+      
+    }
+  });
 }
 
 
